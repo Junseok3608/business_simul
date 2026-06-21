@@ -19,22 +19,22 @@ body {
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    min-height: 100vh; 
-    padding: 15px; 
+    min-height: 100dvh; /* dvh 단위로 변경 */
+    padding: 0; /* 모바일 전면 배포를 위해 보디 패딩 제거 */
 }
 
+/* 폰 테두리를 없애고 사용자 화면 전체를 100% 활용하도록 대폭 수정 */
 .phone-container { 
     background: var(--card-bg); 
-    width: 100%; 
+    width: 100vw; 
+    height: 100dvh; /* 기기별 주소창 변화에 대응해 세로 꽉 차게 설정 */
     max-width: 412px; 
-    height: 844px; 
-    border-radius: 30px; 
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1); 
-    border: 8px solid #1e293b; 
     display: flex; 
     flex-direction: column; 
     overflow: hidden; 
     position: relative; 
+    border: none; /* 논문 시연용 투박한 스마트폰 베젤 테두리 제거 */
+    border-radius: 0; /* 모바일 브라우저 전면 핏을 위해 라운드 해제 */
 }
 
 .progress-bar { 
@@ -44,6 +44,7 @@ body {
     position: absolute; 
     top: 0; 
     left: 0; 
+    z-index: 10;
 }
 
 .progress-fill { 
@@ -53,14 +54,15 @@ body {
     transition: width 0.3s ease; 
 }
 
+/* 각 페이지가 화면을 등분하여 스크롤 없이 하단 버튼을 고정하도록 배치 */
 .page { 
     display: none; 
     flex: 1; 
     flex-direction: column; 
     justify-content: space-between; 
-    padding: 30px 24px; 
+    padding: 40px 24px 30px 24px; /* 상하 여백 정밀 조율 */
     height: 100%; 
-    overflow-y: auto; 
+    overflow-y: hidden; /* 페이지 전체 스크롤 원천 차단 */
 }
 
 .page.active { 
@@ -69,7 +71,7 @@ body {
 
 .title-area { 
     text-align: center; 
-    margin-top: 40px; 
+    margin-top: 60px; 
 }
 
 .title-area h1 { 
@@ -90,9 +92,8 @@ body {
     font-size: 20px; 
     font-weight: 700; 
     color: #0f172a; 
-    margin-bottom: 24px; 
+    margin-bottom: 20px; 
     line-height: 1.4; 
-    margin-top: 20px; 
 }
 
 .select-box { 
@@ -130,9 +131,10 @@ body {
     position: relative; 
 }
 
+/* 입력창이 화면 아래 버튼을 밀어내지 않도록 세로 높이 축소 조정 */
 .text-input { 
     width: 100%; 
-    height: 180px; 
+    height: 140px; 
     padding: 16px; 
     font-size: 15px; 
     border: 2px solid var(--border-color); 
@@ -166,12 +168,14 @@ body {
     transition: background 0.2s; 
     text-align: center; 
     box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); 
+    margin-top: auto; /* 언제나 바닥면에 달라붙도록 배치 */
 }
 
 .btn:active { 
     background-color: #1d4ed8; 
 }
 
+/* 결과 프롬프트 박스의 세로 크기를 모바일 화면 비율에 맞춰 동적 조절 */
 .prompt-box { 
     background-color: #1e293b; 
     color: #f8fafc; 
@@ -180,7 +184,7 @@ body {
     font-family: monospace; 
     font-size: 13px; 
     line-height: 1.5; 
-    height: 350px; 
+    height: calc(100dvh - 280px); /* 화면 전체에서 나머지 UI 영역만큼 제외하고 자동 할당 */
     overflow-y: auto; 
     white-space: pre-wrap; 
     word-break: break-all; 
