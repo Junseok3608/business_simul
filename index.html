@@ -1,122 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>비즈니스 한국어 화용 프롬프트 생성기</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="phone-container">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-<div class="phone-container">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
-    <div class="page active" id="page1">
-        <div class="content-wrapper" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
-            <div class="title-area">
-                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'></path></svg>" style="margin-bottom: 20px;">
-                <h1>비즈니스 한국어<br>화용 시뮬레이터</h1>
-                <p>사회언어학적 변수(P, D, R)를 제어하여<br>나만의 AI 요청 화행 연습 프롬프트를 만듭니다.</p>
-            </div>
+      <div class="page active" id="page1">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%">
+          <div class="title-area">
+            <img
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'></path></svg>"
+              style="margin-bottom: 20px"
+            />
+            <h1>비즈니스 한국어<br />화용 시뮬레이터</h1>
+            <p>사회언어학적 변수(P, D, R)를 제어하여<br />나만의 AI 요청 화행 연습 프롬프트를 만듭니다.</p>
+          </div>
         </div>
         <button class="btn" onclick="nextPage(2)">시작하기</button>
-    </div>
+      </div>
 
-    <div class="page" id="page2">
+      <div class="page" id="page2">
         <div class="content-wrapper">
-            <div class="question-title">대화의 상대방이 누구입니까? <br>(권력 관계 축)</div>
-            <select class="select-box" id="paramP">
-                <option value="+P">나보다 직급이 높은 사람 (상사, 팀장, 교수 등)</option>
-                <option value="-P">나와 직급이 수평적이거나 부하인 관계 (동료, 부하, 후배)</option>
-            </select>
-            <div class="example-card">
-                💡 <b>안내</b>: 직장 상사와의 소통은 체면 위협 수위가 높으므로 엄격한 완화 표지 시스템이 활성화됩니다. 동료 및 부하는 수평적 소통 규칙이 적용됩니다.
-            </div>
+          <div class="question-title">대화의 상대방이 누구입니까? <br />(권력 관계 축)</div>
+          <select class="select-box" id="paramP">
+            <option value="+P">나보다 직급이 높은 사람 (상사, 팀장, 교수 등)</option>
+            <option value="-P">나와 직급이 수평적이거나 부하인 관계 (동료, 부하, 후배)</option>
+          </select>
+          <div class="example-card">💡 <b>안내</b>: 직장 상사와의 소통은 체면 위협 수위가 높으므로 엄격한 완화 표지 시스템이 활성화됩니다. 동료 및 부하는 수평적 소통 규칙이 적용됩니다.</div>
         </div>
         <button class="btn" onclick="nextPage(3)">다음 단계</button>
-    </div>
+      </div>
 
-    <div class="page" id="page3">
+      <div class="page" id="page3">
         <div class="content-wrapper">
-            <div class="question-title">상대방과 당신은 어느 정도로 친밀합니까? <br>(사회적 거리 축)</div>
-            <select class="select-box" id="paramD">
-                <option value="+D">친하지 않음 / 서먹함 / 처음 만난 관계</option>
-                <option value="-D">매우 친함 / 자주 교류함 / 사적 친분 있음</option>
-            </select>
-            <div class="example-card">
-                📌 <b>거리감 감각 예시</b>:<br>
-                - <b>친하지 않음 (+D)</b>: 타 부서 협업 담당자, 이직한 지 얼마 안 된 조직 리더<br>
-                - <b>매우 친함 (-D)</b>: 매일 커피를 같이 마시는 동기 사원, 격의 없는 사수
-            </div>
+          <div class="question-title">상대방과 당신은 어느 정도로 친밀합니까? <br />(사회적 거리 축)</div>
+          <select class="select-box" id="paramD">
+            <option value="+D">친하지 않음 / 서먹함 / 처음 만난 관계</option>
+            <option value="-D">매우 친함 / 자주 교류함 / 사적 친분 있음</option>
+          </select>
+          <div class="example-card">
+            📌 <b>거리감 감각 예시</b>:<br />
+            - <b>친하지 않음 (+D)</b>: 타 부서 협업 담당자, 이직한 지 얼마 안 된 조직 리더<br />
+            - <b>매우 친함 (-D)</b>: 매일 커피를 같이 마시는 동기 사원, 격의 없는 사수
+          </div>
         </div>
         <button class="btn" onclick="nextPage(4)">다음 단계</button>
-    </div>
+      </div>
 
-    <div class="page" id="page4">
+      <div class="page" id="page4">
         <div class="content-wrapper">
-            <div class="question-title">어떤 소통 매체를 통해 요청을 전달하십니까? <br>(매체 장르 축)</div>
-            <select class="select-box" id="paramMedium">
-                <option value="이메일">공식 이메일 (비동시성 텍스트 장르)</option>
-                <option value="사내 메신저">사내 메신저 (슬랙, 잔디, 팀즈 등 간결 장르)</option>
-                <option value="구어 대화">대면 대화 및 전화 (실시간 대면 담화 장르)</option>
-            </select>
-            <div class="example-card">
-                📱 <b>매체별 핵심 규칙</b>:<br>
-                - <b>이메일</b>: 머리말/꼬리말 완결성 위주 적층 구조 요구.<br>
-                - <b>메신저</b>: 간결성 및 이모티콘 완화 장치 허용.<br>
-                - <b>구어 대화</b>: 실시간 음성 상호작용 및 완곡 어미 최적화.
-            </div>
+          <div class="question-title">어떤 매체를 통해 요청을 전달할 예정입니까? <br />(매체 장르 축)</div>
+          <select class="select-box" id="paramMedium">
+            <option value="이메일">공식 이메일 (비동시성 텍스트 장르)</option>
+            <option value="사내 메신저">사내 메신저 (슬랙, 잔디, 팀즈 등)</option>
+            <option value="구어 대화">대면 대화 및 전화 (실시간 대면 담화 장르)</option>
+          </select>
+          <div class="example-card">
+            📱 <b>매체별 핵심 규칙</b>:<br />
+            - <b>이메일</b>: 머리말/꼬리말 완결성 위주 적층 구조 요구.<br />
+            - <b>메신저</b>: 간결성 및 이모티콘 완화 장치 허용.<br />
+            - <b>구어 대화</b>: 실시간 음성 상호작용 및 완곡 어미 최적화.
+          </div>
         </div>
         <button class="btn" onclick="nextPage(5)">다음 단계</button>
-    </div>
+      </div>
 
-    <div class="page" id="page5">
+      <div class="page" id="page5">
         <div class="content-wrapper">
-            <div class="question-title">요청할 내용이 청자에게 어느 정도 부담이 됩니까? <br>(과업 부담도 축)</div>
-            <select class="select-box" id="paramR">
-                <option value="+R">고부담 (청자에게 시간적·물리적·재정적 비용 유발)</option>
-                <option value="-R">저부담 (단순 정보 요청, 일상적 서류 공유 등)</option>
-            </select>
-            <div class="example-card">
-                ⚠️ <b>부담도 기준 예시</b>:<br>
-                - <b>고부담 (+R)</b>: 마감 기한 직전 연기 요청, 업무 오작동 보완 요구<br>
-                - <b>저부담 (-R)</b>: 기 공유된 양식 재요청, 간단한 회의 일정 조율
-            </div>
+          <div class="question-title">요청할 내용이 청자에게 어느 정도 부담이 됩니까? <br />(과업 부담도 축)</div>
+          <select class="select-box" id="paramR">
+            <option value="+R">고부담 (청자에게 시간적·물리적·재정적 비용 유발)</option>
+            <option value="-R">저부담 (단순 정보 요청, 일상적 서류 공유 등)</option>
+          </select>
+          <div class="example-card">
+            ⚠️ <b>부담도 기준 예시</b>:<br />
+            - <b>고부담 (+R)</b>: 마감 기한 직전 연기 요청, 업무 오작동 보완 요구<br />
+            - <b>저부담 (-R)</b>: 기 공유된 양식 재요청, 간단한 회의 일정 조율
+          </div>
         </div>
         <button class="btn" onclick="nextPage(6)">다음 단계</button>
-    </div>
+      </div>
 
-    <div class="page" id="page6">
+      <div class="page" id="page6">
         <div class="content-wrapper">
-            <div class="question-title">현재 당신이 대처하려는 상황을 간략하게 서술해 주세요.</div>
-            <div class="textarea-wrapper">
-                <textarea class="text-input" id="taskText" placeholder="예: 금요일 마감인 보고서인데 데이터 백업 오류가 생겨서 다음 주 월요일 오전까지 연기를 요청하고 싶다." maxlength="200" oninput="updateCharCount()"></textarea>
-                <div class="char-count" id="charCount">(0 / 200자)</div>
-            </div>
+          <div class="question-title">현재 당신이 대처하려는 상황을 간략하게 서술해 주세요.</div>
+          <div class="textarea-wrapper">
+            <textarea
+              class="text-input"
+              id="taskText"
+              placeholder="예: 금요일 마감인 보고서인데 데이터 백업 오류가 생겨서 다음 주 월요일 오전까지 연기를 요청하고 싶다."
+              maxlength="200"
+              oninput="updateCharCount()"
+            ></textarea>
+            <div class="char-count" id="charCount">(0 / 200자)</div>
+          </div>
         </div>
         <button class="btn" onclick="startLoading()">프롬프트 생성하기</button>
-    </div>
+      </div>
 
-    <div class="page" id="page7" style="justify-content: center;">
+      <div class="page" id="page7" style="justify-content: center">
         <div class="spinner"></div>
-        <div class="loading-text" id="loadingMessage">
-            입력하신 사회언어학적 가감 변수와 직무 과업을 스캐닝하고 있습니다...
+        <div class="loading-text" id="loadingMessage">입력하신 사회언어학적 변수와 직무 과업을 스캐닝하고 있습니다...</div>
+      </div>
+
+      <div class="page" id="page8">
+        <div class="content-wrapper" style="margin-bottom: 5px">
+          <div class="question-title" style="margin-bottom: 8px">마스터 프롬프트 완성</div>
+          <p style="font-size: 12px; color: #64748b; margin-bottom: 10px">아래 텍스트를 복사하여 ChatGPT나 Gemini에 그대로 붙여넣으세요.</p>
+          <div class="prompt-box" id="promptResult"></div>
         </div>
+        <div style="gap: 8px; display: flex; flex-direction: column; flex-shrink: 0">
+          <button class="btn" onclick="copyPrompt()" style="background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2)">프롬프트 복사하기</button>
+          <button class="btn" onclick="resetAll()" style="background-color: #64748b; box-shadow: none">다시 처음으로</button>
+        </div>
+      </div>
     </div>
 
-    <div class="page" id="page8">
-        <div class="content-wrapper" style="margin-bottom: 5px;">
-            <div class="question-title" style="margin-bottom:8px;">마스터 프롬프트 완성</div>
-            <p style="font-size:12px; color:#64748b; margin-bottom:10px;">아래 텍스트를 복사하여 ChatGPT나 Gemini에 그대로 붙여넣으세요.</p>
-            <div class="prompt-box" id="promptResult"></div>
-        </div>
-        <div style="gap:8px; display:flex; flex-direction:column; flex-shrink:0;">
-            <button class="btn" onclick="copyPrompt()" style="background-color:#10b981; box-shadow:0 4px 6px rgba(16, 185, 129, 0.2);">프롬프트 복사하기</button>
-            <button class="btn" onclick="resetAll()" style="background-color:#64748b; box-shadow:none;">다시 처음으로</button>
-        </div>
-    </div>
-</div>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
